@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace pryEmilianoFernandezEtapa2
 {
@@ -44,8 +46,30 @@ namespace pryEmilianoFernandezEtapa2
             ImagenVehiculo.Size = Vehiculo.Size;
             Vehiculo.Parent.Controls.Add(ImagenVehiculo);
 
-            ImagenVehiculo.BringToFront();
-            
+            ImagenVehiculo.BringToFront();          
+        }
+
+        //cargar una imagen en una PictureBox por boton sin random
+        public void CrearVehiculoABA(PictureBox vehiculoPictureBox, Image imagen)
+        {
+            // Crear una nueva PictureBox para la imagen del vehículo
+            PictureBox imagenVehiculo = new PictureBox();
+
+            // Asignar la imagen a la PictureBox del vehículo
+            imagenVehiculo.Image = imagen;
+
+            // Establecer el modo de ajuste de la imagen
+            imagenVehiculo.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            // Establecer la ubicación y el tamaño de la PictureBox del vehículo
+            imagenVehiculo.Location = vehiculoPictureBox.Location;
+            imagenVehiculo.Size = vehiculoPictureBox.Size;
+
+            // Agregar la PictureBox del vehículo al formulario
+            vehiculoPictureBox.Parent.Controls.Add(imagenVehiculo);
+
+            // Traer la PictureBox del vehículo al frente
+            imagenVehiculo.BringToFront();
         }
     }
 }
